@@ -4,7 +4,14 @@ class Chinela:
 
     def getTamanho(self):
         return self.__tamanho
+
     def setTamanho(self, value: int):
+        if value < 20 or > 50:
+            print("fail: O tamanho deve estar entre 20 e 50")
+        elif value % 2 != 0:
+            print("fail: O tamanho deve ser um número par")
+        else:
+            self.__tamanho = value
 
 chinela = Chinela() 
 
