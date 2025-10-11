@@ -4,3 +4,10 @@
 2025-10-06 19:34:08, EXEC, v:1, k:poo@chinela, mode:FREE, size:16
 2025-10-06 19:34:54, MOVE, v:1, k:poo@chinela, mode:BACK
 2025-10-06 19:34:59, MOVE, v:1, k:poo@relogio, mode:DOWN
+2025-10-06 19:50:45, MOVE, v:1, k:poo@chinela, mode:PICK
+2025-10-06 19:50:46, EXEC, v:1, k:poo@chinela, mode:LOCK, rate:0
+2025-10-06 19:50:54, EXEC, v:1, k:poo@chinela, mode:LOCK, rate:0
+2025-10-06 19:54:05, MOVE, v:1, k:poo@chinela, mode:BACK
+2025-10-06 19:54:08, MOVE, v:1, k:poo@relogio, mode:PICK
+2025-10-06 19:54:09, EXEC, v:1, k:poo@relogio, mode:FULL, rate:0, size:0
+2025-10-06 19:54:19, MOVE, v:1, k:poo@relogio, mode:BACK
