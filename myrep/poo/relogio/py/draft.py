@@ -17,3 +17,18 @@ class Watch:
     def setSecond():
 
     def nextSecond():
+
+def main():
+    watch = Watch(0)
+    while True:
+        line: str = input()
+        print("$" + line)
+        args: list[str] = line.split(" ")
+
+        if args[0] == "end":
+            break
+        elif args[0] == "init":
+
+
+
+main() 
