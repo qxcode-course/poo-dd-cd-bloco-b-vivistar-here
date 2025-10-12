@@ -5,16 +5,25 @@ class Watch:
         self.second = 0
 
     def getHour(self):
+        return self.hour
 
     def getMinute(self):
+        return self.minute
 
     def getSecond(self):
+        return self.second
 
-    def setHour():
+    def setHour(self, hour):
+        if 0 >= hour <= 23:
+            self.hour = hour
 
-    def setMinute():
+    def setMinute(self, minute):
+        if 0 <= minute <= 59:
+            self.minute = minute
 
-    def setSecond():
+    def setSecond(self, second):
+        if 0 <= second <= 59:
+            self.second = second
 
     def nextSecond():
 
