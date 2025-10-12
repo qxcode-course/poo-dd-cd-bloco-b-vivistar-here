@@ -25,7 +25,20 @@ class Watch:
         if 0 <= second <= 59:
             self.second = second
 
-    def nextSecond():
+    def nextSecond(self):
+        self.second += 1
+        if self.second > 59:
+            self.second = 0
+        self.minute += 1
+        if self.minute > 59:
+            self.minute = 0
+        self.hour += 1
+        if self.hour > 23:
+            self.hour = 0
+
+    def __str__(self):
+        return f"{self.hour:02d}:{self.minute:02d}:{self.second:02d}"
+
 
 def main():
     watch = Watch(0)
