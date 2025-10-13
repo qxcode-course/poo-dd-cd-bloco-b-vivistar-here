@@ -27,6 +27,16 @@
         },
         {
             "label": "2025-10-11_21-40-39",
+            "content": "@@ -630,6 +630,4 @@\n o())\n-qa\n",
+            "lines": "23"
+        },
+        {
+            "label": "2025-10-12_20-34-39",
+            "content": "@@ -626,8 +626,10 @@\n manho())\n+qa\n",
+            "lines": "23"
+        },
+        {
+            "label": "2025-10-12_20-34-51",
             "content": "class Chinela:\n    def __init__(self):\n        self.__tamanho = 0\n\n    def getTamanho(self):\n        return self.__tamanho\n\n    def setTamanho(self, value: int):\n        if value < 20 or value > 50:\n            print(\"fail: O tamanho deve estar entre 20 e 50\")\n        elif value % 2 != 0:\n            print(\"fail: O tamanho deve ser um n\u00famero par\")\n        else:\n            self.__tamanho = value\n\nchinela = Chinela() \n\nwhile chinela.getTamanho() == 0: \n    print(\"Digite seu tamanho de chinela\")\n    tamanho = int(input()) \n    chinela.setTamanho(tamanho)\n\nprint(\"Parabens, voc\u00ea comprou uma chinela tamanho\", chinela.getTamanho())",
             "lines": "23"
         }

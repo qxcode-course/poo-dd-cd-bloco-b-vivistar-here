@@ -5,3 +5,8 @@
 2025-10-11 21:39:59, EXEC, v:1, k:poo@chinela, mode:FREE
 2025-10-11 21:40:39, EXEC, v:1, k:poo@chinela, mode:LOCK, rate:0, size:23
 2025-10-11 21:40:42, EXEC, v:1, k:poo@chinela, mode:FREE
+2025-10-11 23:59:14, SELF, v:1, k:poo@chinela, rate:100, human:amigo, iagen:copilot, alone:7, study:40
+2025-10-11 23:59:32, SELF, v:1, k:poo@relogio, alone:2
+2025-10-11 23:59:32, MOVE, v:1, k:poo@relogio, mode:PICK
+2025-10-11 23:59:33, EXEC, v:1, k:poo@relogio, mode:FULL, rate:0, size:19
+2025-10-11 23:59:42, EXEC, v:1, k:poo@relogio, mode:FULL, rate:0

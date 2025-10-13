@@ -8,14 +8,16 @@ sources:
 - database: poo
   link: https://github.com/qxcodepoo/arcade/blob/master/Readme.md
   cache_path: /workspaces/poo-dd-cd-bloco-b-vivistar-here/myrep/.tko/cache/poo.md
-  cache_timestamp: '2025-10-09 22:34:20'
+  cache_timestamp: '2025-10-13 02:30:47'
   filters:
   - acesso
   - simples
 expanded:
 - poo@campanha-principal
 - poo@bloco_b-modificadores-de-acesso
-tasks: {}
+tasks:
+  poo@chinela: '{rate:100, human:amigo, iagen:copilot, alone:7, study:40}'
+  poo@relogio: '{rate:100, human:amigo, iagen:copilot_e_gpt, alone:4, study:112}'
 flags:
   quests: 0
   tracks: 0
@@ -23,4 +25,4 @@ flags:
   graph: 0
   xray: 0
 lang: py
-selected: poo@camisa
+selected: poo@relogio
