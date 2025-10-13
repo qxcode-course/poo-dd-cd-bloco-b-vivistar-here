@@ -1,77 +1,95 @@
 class Watch:
-    def __init__(self):
-        self.hour = 0
-        self.minute = 0
-        self.second = 0
+    def __init__(self, hour: int = 0, minute: int = 0, second: int = 0):
+        self.__hour = 0
+        self.__minute = 0
+        self.__second = 0
 
-    def getHour(self):
-        return self.hour
+        self.setHour(hour)
+        self.setMinute(minute)
+        self.setSecond(second)
 
-    def getMinute(self):
-        return self.minute
+    def __str__(self) -> str:
+        hour = self.getHour()
+        minute = self.getMinute()
+        second = self.getSecond()
+        return f"{hour:02}:{minute:02}:{second:02}"
 
-    def getSecond(self):
-        return self.second
+    def getHour(self) -> int:
+        return self.__hour
 
-    def setHour(self, hour):
-        if 0 <= hour <= 23:
-            self.hour = hour
+    def getMinute(self) -> int:
+        return self.__minute
 
-    def setMinute(self, minute):
-        if 0 <= minute <= 59:
-            self.minute = minute
+    def getSecond(self) -> int:
+        return self.__second
 
-    def setSecond(self, second):
-        if 0 <= second <= 59:
-            self.second = second
+    def setHour(self, value: int):
+        if value < 0 or value > 23:
+            print("fail: hora invalida")
+            return
+
+        self.__hour = value
+
+    def setMinute(self, value: int):
+        if value < 0 or value > 59:
+            print("fail: minuto invalido")
+            return
+
+        self.__minute = value
+
+    def setSecond(self, value: int):
+        if value < 0 or value > 59:
+            print("fail: segundo invalido")
+
+        self.__second = value
 
     def nextSecond(self):
-        self.second += 1
-    if self.second > 59:
-        self.second = 0
-        self.minute += 1
-        if self.minute > 59:
-            self.minute = 0
-            self.hour += 1
-            if self.hour > 23:
-                self.hour = 0
-                
-    def __str__(self):
-        return f"{self.hour:02d}:{self.minute:02d}:{self.second:02d}"
+        if self.getSecond() != 59:
+            self.setSecond(self.getSecond() + 1)
+        
+        else:
+            self.setSecond(0)
+            if self.getMinute() != 59:
+                self.setMinute(self.getMinute() + 1)
+            
+            else:
+                self.setMinute(0)
+                if self.getHour() != 23:
+                    self.setHour(self.getHour() + 1)
+                else:
+                    self.setHour(0)
+                    self.setMinute(0)
+                    self.setSecond(0)
+
+        return
 
 
 def main():
     watch = Watch()
     while True:
-        line: str = input()
-        print("$" + line)
-        args: list[str] = line.split(" ")
-
-        if args[0] == "end":
-            break
-        elif args[0] == "init":
-            h = int(args[1])
-            m = int(args[2])
-            s = int(args[3])
-            watch.setHour(h)
-            watch.setMinute(m)
-            watch.setSecond(s)
+        line = input()
+        args = line.split(" ")
+        print(f"${line}")
         
-        elif args[0] == "set":
-            if args[1] == "hour":
-                 watch.setHour(int(args[2]))
-            elif args[1] == "minute":
+        match args[0]:
+            case "show":
+                print(watch)
+            
+            case "init":
+                watch = Watch(int(args[1]), int(args[2]), int(args[3]))
+            
+            case "set":
+                watch.setHour(int(args[1]))
                 watch.setMinute(int(args[2]))
-            elif args[1] == "second":
-                watch.setSecond(int(args[2]))
+                watch.setSecond(int(args[3]))
 
-        elif args[0] == "show":
-            print(watch)
+            case "next":
+                watch.nextSecond()
 
-        elif args[0] == "next":
-            watch.nextSecond()
+            case "end":
+                break
+            
+            case _:
+                print("fail: comando invalido")
 
-        else:
-            print("fail: comando invalido")
-        
-main() 
+main();
