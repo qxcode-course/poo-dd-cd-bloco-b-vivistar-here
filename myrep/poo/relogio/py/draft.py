@@ -40,6 +40,7 @@ class Watch:
     def setSecond(self, value: int):
         if value < 0 or value > 59:
             print("fail: segundo invalido")
+            return
 
         self.__second = value
 
@@ -92,4 +93,4 @@ def main():
             case _:
                 print("fail: comando invalido")
 
-main();
+main()

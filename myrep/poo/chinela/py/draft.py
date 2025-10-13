@@ -20,4 +20,4 @@ while chinela.getTamanho() == 0:
     tamanho = int(input()) 
     chinela.setTamanho(tamanho)
 
-print("Parabens, você comprou uma chinela tamanho", chinela.getTamanho())qa
+print("Parabens, você comprou uma chinela tamanho", chinela.getTamanho())
