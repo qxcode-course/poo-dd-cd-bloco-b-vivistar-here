@@ -4,7 +4,7 @@ class Watch:
         self.__minute = 0
         self.__second = 0
 
-        self.setHour(hour)
+        self.setHour(hour)kkkkkk
         self.setMinute(minute)
         self.setSecond(second)
 
