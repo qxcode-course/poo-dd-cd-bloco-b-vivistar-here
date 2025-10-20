@@ -1,0 +1,4 @@
+2025-10-20 18:52:02, MOVE, v:1, k:poo@notebook, mode:DOWN
+2025-10-20 18:52:12, MOVE, v:1, k:poo@notebook, mode:PICK
+2025-10-20 18:52:13, EXEC, v:1, k:poo@notebook, mode:LOCK, rate:100, size:0
+2025-10-20 19:15:09, EXEC, v:1, k:poo@notebook, mode:LOCK, rate:0, size:40
