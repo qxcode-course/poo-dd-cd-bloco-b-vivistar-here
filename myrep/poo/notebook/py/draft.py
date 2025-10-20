@@ -1,3 +1,19 @@
+class Bateria:
+    def __init__(self, capacidade: int):
+        self.__capacidade: int = capacidade
+        self.__carga: int = capacidade
+
+    def getCarga(self) -> int:
+        return self.__carga
+
+    def setCarga(self, value: int):
+        if value < 0:
+            self.__carga = 0
+        elif value > self.__capacidade:
+            self.__carga = self.__capacidade
+        else:
+            self.__carga = value
+
 class Notebook:
     def __init__(self):
         self.__ligado: bool = False
