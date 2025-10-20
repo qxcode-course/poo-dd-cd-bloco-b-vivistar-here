@@ -15,15 +15,22 @@ class Notebook:
             print("Notebook desligando")
         else:
             print("Notebook já está desligado")
-        
-        notebook = Notebook()
-notebook.mostrar()
-notebook.usar(10)
-notebook.ligar()
-notebook.mostrar()
-notebook.usar(10)
-notebook.desligar()
 
+    def mostrar(self):
+        estado = "ligado" if self.__ligado else "desligado"
+        print(f"Notebook está {estado}")
+
+    def usar(self, horas: int):
+        if self.__ligado:
+            print(f"Usando o notebook por {horas} horas")
+            else:
+                print("Erro: Notebook desligado. Tente ligar primeiro.")
+    
+    def __str__(self):
+        estado = "ligado" if self.__ligado else "desligado"
+        return f"Notebook está {estado}"
+
+    
 def main():
     notebook = Notebook()
     while True:
