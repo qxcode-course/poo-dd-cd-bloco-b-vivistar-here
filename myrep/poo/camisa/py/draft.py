@@ -10,7 +10,7 @@ class Camisa:
         if value in tamanhos_validos:
             self.__tamanho = value
         else:
-            print("fail: os tamanhos disponiveis sao PP, P, M, G, GG")
+            print("fail: os tamanhos disponiveis sao PP, P, M, G, GG, XG")
 
 def main():
         roupa = Camisa()
