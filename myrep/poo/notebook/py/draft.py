@@ -1,19 +1,16 @@
 class Notebook:
     def __init__(self):
         self.__ligado: bool = False
-        self.mostrar(mostrar)
-        self.usar(usar)
-        self.ligar(ligar)
-
+      
     def ligar(self):
-        if self.__ligado:
+        if not self.__ligado:
             self.__ligado = True
             print("Notebook ligando")
         else:
             print("O notebook já está ligado")
         
     def desligar(self):
-        if self.__ligado:
+        if not self.__ligado:
             self.ligado = Falso
             print("Notebook desligando")
         else:
