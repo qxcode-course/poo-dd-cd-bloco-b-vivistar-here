@@ -23,8 +23,8 @@ class Notebook:
     def usar(self, horas: int):
         if self.__ligado:
             print(f"Usando o notebook por {horas} horas")
-            else:
-                print("Erro: Notebook desligado. Tente ligar primeiro.")
+        else:
+            print("Erro: Notebook desligado. Tente ligar primeiro.")
     
     def __str__(self):
         estado = "ligado" if self.__ligado else "desligado"
@@ -38,7 +38,24 @@ def main():
         args = line.split(" ")
         print(f"&{line}")
 
-    match args[0] == "mostrar":
-    print(Notebook)
+    if len(args) == 0:
+        continue
+
+    if args[0] == "end":
+        break
+
+    elif args[0] == "show":
+        notebook.mostrar()
+    elif args[0] == "ligar":
+        notebook.ligar()
+    elif args[0] == "desligar":
+        notebook.desligar()
+    elif args[0] == "usar": 
+        if len(args) > 1 and args[1].isdigit():
+            notebook.usar(int(args[1]))
+            else:
+            print("Fail: informe o tempo de uso em horas")
+            else:
+            print("Fail: comando inválido")
 
 main()
