@@ -14,6 +14,22 @@ class Bateria:
         else:
             self.__carga = value
 
+    def descarregr(self, tempo: int) -> int:
+        if tempo <= self.__carga:
+            self.__carga -= tempo
+            return tempo
+        else:
+            usado = self.__carga 
+            self.__carga = 0
+            return usado
+
+    def mostrar(self):
+        print(f"({self.__carga}/{self.__capacidade})")
+
+    def __str__(self):
+        return f"({self.__carga}/{self.__capacidade})"
+
+
 class Notebook:
     def __init__(self):
         self.__ligado: bool = False
@@ -54,24 +70,19 @@ def main():
         args = line.split(" ")
         print(f"&{line}")
 
-    if len(args) == 0:
-        continue
-
-    if args[0] == "end":
-        break
-
-    elif args[0] == "show":
-        notebook.mostrar()
-    elif args[0] == "ligar":
-        notebook.ligar()
-    elif args[0] == "desligar":
-        notebook.desligar()
-    elif args[0] == "usar": 
-        if len(args) > 1 and args[1].isdigit():
-            notebook.usar(int(args[1]))
+        if args[0] == "end":
+            break
+        elif args[0] == "show":
+            notebook.mostrar()
+        elif args[0] == "ligar":
+            notebook.ligar()
+        elif args[0] == "desligar":
+            notebook.desligar()
+        elif args[0] == "usar": 
+            if len(args) > 1 and args[1].isdigit():
+                notebook.usar(int(args[1]))
             else:
-            print("Fail: informe o tempo de uso em horas")
-            else:
+                print("Fail: informe o tempo de uso em horas")
+        else:
             print("Fail: comando inválido")
-
 main()
