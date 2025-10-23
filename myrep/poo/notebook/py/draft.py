@@ -3,6 +3,9 @@ class Bateria:
         self.__capacidade: int = capacidade
         self.__carga: int = capacidade
 
+    def getCapacidade(self) -> int:
+        return self.__capacidade
+
     def getCarga(self) -> int:
         return self.__carga
 
@@ -65,10 +68,14 @@ class Notebook:
     
 def main():
     notebook = Notebook()
+    bateria: Bateria | None = None
     while True:
         line = input()
         args = line.split(" ")
         print(f"&{line}")
+
+        if len(args) == 0:
+            continue
 
         if args[0] == "end":
             break
@@ -85,4 +92,29 @@ def main():
                 print("Fail: informe o tempo de uso em horas")
         else:
             print("Fail: comando inválido")
+
+        elif args[0] == "bateria":
+            if len(args) > 1 and args[1].isdigit():
+                bateria = Bateria(int(args[1]))
+                print(f"Bateria criada com capacidade {args[1]}")
+            else:
+                print("fail: informe a capacidadde da bateria")
+
+        elif args[0] == "mostrarbateria":
+            if bateria is not None:
+                bateria.mostrar()
+            else:
+                print("fail: nenhuma bateria foi criada")
+            
+        elif args[0] == "setbateria":
+            if baterua is not None:
+                notebook.setBateria(bateria)
+            else:
+                print("fail: nenhuma bateria disponível")
+
+        elif args[0] == "descarregar":
+            bateria = notebook.descarregar()
+
+        else:
+            print("fail: comando inválido")
 main()
