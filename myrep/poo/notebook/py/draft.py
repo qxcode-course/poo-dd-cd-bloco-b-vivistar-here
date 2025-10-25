@@ -115,26 +115,49 @@ class Notebook:
         estado = "ligado" if self.__ligado else "desligado"
         print(f"Notebook está {estado}")
 
-    def usar(self, horas: int):
-        if self.__ligado:
-            print(f"Usando o notebook por {horas} horas")
+    def usar(self, tempo: int):
+        if not self.__ligado:
+            print("notebook desligado")
+            return
+        if self.__bateria is None and self.__carregador is None:
+            print("fail: sem fonte de energia")
+            self.__ligado = False
+            return
+        if self.__bateria and self.__carregador:
+            self.__bateria.carregador(tempo, self.__carregador.getPotencia())
+            print(f"notebook usado por {tempo} minutos (carregando ao mesmo tempo)")
+        elif self.__bateria:
+            usado = self.__bateria.descarregar(tempo)
+            if usado < tempo:
+                print(f"usando por {usado} minutos, notebook descaregou")
+                self.__ligado = False
+            else: 
+                print(f"notebook usado por {tempo} minutos")
+        elif self.__carregador:
+            print(f"usando por {tempo} minutos (somente carregador)")
         else:
             print("Erro: Notebook desligado. Tente ligar primeiro.")
     
     def __str__(self):
         estado = "ligado" if self.__ligado else "desligado"
-        return f"Notebook está {estado}"
+        bat = str(self.__bateria) if self.__bateria else "nenhuma"
+        car = str(self.__carregador) if self.__carregador else "desconectado"
+        print(f"Status: {estado}, Bateria: {bat}, Carregador: {car}")
 
     
 def main():
     notebook = Notebook()
     bateria: Bateria | None = None
+    carregador: Carregador | None = None
+
     while True:
         line = input()
         args = line.split(" ")
         print(f"&{line}")
 
-    
+        if len(args) == 0:
+            continue
+
         if args[0] == "end":
             break
         elif args[0] == "show":
@@ -153,19 +176,37 @@ def main():
                 bateria = Bateria(int(args[1]))
                 print(f"Bateria criada com capacidade {args[1]}")
             else:
-                print("fail: informe a capacidadde da bateria")
+                print("fail: informe a capacidade da bateria")
         elif args[0] == "mostrarbateria":
             if bateria is not None:
                 bateria.mostrar()
             else:
                 print("fail: nenhuma bateria foi criada")
         elif args[0] == "setbateria":
-            if baterua is not None:
+            if bateria is not None:
                 notebook.setBateria(bateria)
             else:
                 print("fail: nenhuma bateria disponível")
         elif args[0] == "rmbateria":
             bateria = notebook.rmBateria()
+        elif args[0] == "carregador":
+            if len(args) > 1 and args[1].isdigit():
+                carregador = Carregador(int(args[1]))
+                print(f"Carregador criado com potência {args[1]}")
+            else:
+                print("fail: informe a potência do carregador")
+        elif args[0] == "mostrarcarregador":
+            if carregador is not None:
+                carregador.mostrar()
+            else:
+                print("fail: nenhum carregador foi criado")
+        elif args[0] == "setcarregador":
+            if carregador is not None:
+                notebook.setCarregador(carregador)
+            else:
+                print("fail: nennhum carregador disponível")
+        elif args[0] == "rmcarregador":
+            notebook.rmCarregador()
         else:
             print("fail: comando inválido")
 main()
