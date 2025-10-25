@@ -7,8 +7,118 @@
         },
         {
             "label": "2025-10-20_19-15-09",
-            "content": "class Notebook:\n    def __init__(self):\n        self.__ligado: bool = False\n        self.mostrar(mostrar)\n        self.usar(usar)\n        self.ligar(ligar)\n\n    def ligar(self):\n        if self.__ligado:\n            self.__ligado = True\n            print(\"Notebook ligando\")\n        else:\n            print(\"O notebook j\uce58 est\uce58 ligado\")\n        \n    def desligar(self):\n        if self.__ligado:\n            self.ligado = Falso\n            print(\"Notebook desligando\")\n        else:\n            print(\"Notebook j\uce58 est\uce58 desligado\")\n        \n        notebook = Notebook()\nnotebook.mostrar()\nnotebook.usar(10)\nnotebook.ligar()\nnotebook.mostrar()\nnotebook.usar(10)\nnotebook.desligar()\n\ndef main():\n    notebook = Notebook()\n    while True:\n        line = input()\n        args = line.split(\" \")\n        print(f\"&{line}\")\n\n    match args[0] == \"mostrar\":\n    print(Notebook)\n\nmain()",
+            "content": "@@ -71,24 +71,98 @@\n False%0A      \n+  self.mostrar(mostrar)%0A        self.usar(usar)%0A        self.ligar(ligar)%0A\n %0A    def lig\n@@ -174,36 +174,32 @@\n lf):%0A        if \n-not \n self.__ligado:%0A \n@@ -313,22 +313,22 @@\n tebook j\n-%C3%A1\n+%EC%B9%98\n  est\n-%C3%A1\n+%EC%B9%98\n  ligado%22\n@@ -377,12 +377,8 @@\n  if \n-not \n self\n@@ -508,14 +508,14 @@\n ok j\n-%C3%A1\n+%EC%B9%98\n  est\n-%C3%A1\n+%EC%B9%98\n  des\n@@ -527,1123 +527,344 @@\n o%22)%0A\n-%0A\n+   \n     \n-def mostrar(self):%0A        estado = %22ligado%22 if self.__ligado else %22desligado%22%0A        print(f%22Notebook est%C3%A1 %7Bestado%7D%22)%0A%0A    def usar(self, horas: int):%0A        if self.__ligado:%0A            print(f%22Usando o notebook por %7Bhoras%7D horas%22)%0A            else:%0A                print(%22Erro: Notebook desligado. Tente ligar primeiro.%22)%0A    %0A    def __str__(self):%0A        estado = %22ligado%22 if self.__ligado else %22desligado%22%0A        return f%22Notebook est%C3%A1 %7Bestado%7D%22%0A%0A    %0Adef main():%0A    notebook = Notebook()%0A    while True:%0A        line = input()%0A        args = line.split(%22 %22)%0A        print(f%22&%7Bline%7D%22)%0A%0A    if len(args) == 0:%0A        continue%0A%0A    if args%5B0%5D == %22end%22:%0A        break%0A%0A    elif args%5B0%5D == %22show%22:%0A        notebook.mostrar()%0A    elif args%5B0%5D == %22ligar%22:%0A        notebook.ligar()%0A    elif args%5B0%5D == %22desligar%22:%0A        notebook.desligar()%0A    elif args%5B0%5D == %22usar%22: %0A        if len(args) %3E 1 and args%5B1%5D.isdigit():%0A            notebook.usar(int(args%5B1%5D))%0A            else:%0A                print(%22Fail: informe o tempo de uso em horas%22)%0A            else:%0A                print(%22Fail: comando inv%C3%A1lido%22\n+ %0A        notebook = Notebook()%0Anotebook.mostrar()%0Anotebook.usar(10)%0Anotebook.ligar()%0Anotebook.mostrar()%0Anotebook.usar(10)%0Anotebook.desligar()%0A%0Adef main():%0A    notebook = Notebook()%0A    while True:%0A        line = input()%0A        args = line.split(%22 %22)%0A        print(f%22&%7Bline%7D%22)%0A%0A    match args%5B0%5D == %22mostrar%22:%0A    print(Notebook\n )%0A%0Am\n",
             "lines": "40"
+        },
+        {
+            "label": "2025-10-20_23-30-01",
+            "content": "@@ -699,32 +699,36 @@\n horas%22)%0A        \n+    \n else:%0A          \n",
+            "lines": "61"
+        },
+        {
+            "label": "2025-10-20_23-30-17",
+            "content": "@@ -721,24 +721,28 @@\n             \n+    \n print(%22Erro:\n@@ -1423,38 +1423,46 @@\n gs%5B1%5D))%0A        \n+    \n else:%0A\n+    \n             prin\n@@ -1504,38 +1504,46 @@\n horas%22)%0A        \n+    \n else:%0A\n+    \n             prin\n",
+            "lines": "61"
+        },
+        {
+            "label": "2025-10-20_23-32-06",
+            "content": "@@ -1419,36 +1419,32 @@\n gs%5B1%5D))%0A        \n-    \n else:%0A          \n@@ -1488,28 +1488,24 @@\n  em horas%22)%0A\n-    \n         else\n",
+            "lines": "61"
+        },
+        {
+            "label": "2025-10-20_23-32-45",
+            "content": "@@ -1,824 +1,4 @@\n-class Bateria:%0A    def __init__(self, capacidade: int):%0A        self.__capacidade: int = capacidade%0A        self.__carga: int = capacidade%0A%0A    def getCarga(self) -%3E int:%0A        return self.__carga%0A%0A    def setCarga(self, value: int):%0A        if value %3C 0:%0A            self.__carga = 0%0A        elif value %3E self.__capacidade:%0A            self.__carga = self.__capacidade%0A        else:%0A            self.__carga = value%0A%0A    def descarregr(self, tempo: int) -%3E int:%0A        if tempo %3C= self.__carga:%0A            self.__carga -= tempo%0A            return tempo%0A        else:%0A            usado = self.__carga %0A            self.__carga = 0%0A            return usado%0A%0A    def mostrar(self):%0A        print(f%22(%7Bself.__carga%7D/%7Bself.__capacidade%7D)%22)%0A%0A    def __str__(self):%0A        return f%22(%7Bself.__carga%7D/%7Bself.__capacidade%7D)%22%0A%0A%0A\n clas\n",
+            "lines": "61"
+        },
+        {
+            "label": "2025-10-20_23-44-13",
+            "content": "@@ -2239,32 +2239,36 @@\n gs%5B1%5D))%0A        \n+    \n else:%0A          \n",
+            "lines": "93"
+        },
+        {
+            "label": "2025-10-20_23-44-28",
+            "content": "@@ -2312,32 +2312,36 @@\n horas%22)%0A        \n+    \n else:%0A          \n",
+            "lines": "93"
+        },
+        {
+            "label": "2025-10-20_23-44-35",
+            "content": "@@ -2320,21 +2320,16 @@\n         \n-     \n else:%0A  \n",
+            "lines": "93"
+        },
+        {
+            "label": "2025-10-20_23-44-46",
+            "content": "@@ -2308,24 +2308,33 @@\n  em horas%22)%0A\n+         \n     else:%0A  \n",
+            "lines": "93"
+        },
+        {
+            "label": "2025-10-20_23-44-51",
+            "content": "@@ -1915,26 +1915,8 @@\n inue\n-%0A    cmd = args%5B0%5D\n %0A%0A  \n",
+            "lines": "93"
+        },
+        {
+            "label": "2025-10-20_23-46-25",
+            "content": "@@ -1911,16 +1911,34 @@\n continue\n+%0A    cmd = args%5B0%5D\n %0A%0A    if\n",
+            "lines": "94"
+        },
+        {
+            "label": "2025-10-20_23-46-46",
+            "content": "@@ -1868,24 +1868,65 @@\n %22&%7Bline%7D%22)%0A%0A\n+    if len(args) == 0:%0A        continue%0A%0A\n     if args%5B\n",
+            "lines": "93"
+        },
+        {
+            "label": "2025-10-20_23-46-47",
+            "content": "@@ -1911,16 +1911,17 @@\n   break%0A\n+%0A\n     elif\n",
+            "lines": "90"
+        },
+        {
+            "label": "2025-10-20_23-47-04",
+            "content": "@@ -1897,16 +1897,20 @@\n  %22end%22:%0A\n+    \n     brea\n",
+            "lines": "89"
+        },
+        {
+            "label": "2025-10-20_23-47-11",
+            "content": "@@ -1897,20 +1897,16 @@\n  %22end%22:%0A\n-    \n     brea\n",
+            "lines": "89"
+        },
+        {
+            "label": "2025-10-20_23-47-19",
+            "content": "@@ -1872,20 +1872,16 @@\n ine%7D%22)%0A%0A\n-    \n     if a\n@@ -1909,22 +1909,14 @@\n     \n-   \n- \n break%0A\n-    \n     \n@@ -1939,36 +1939,32 @@\n %22show%22:%0A        \n-  \n-  \n notebook.mostrar\n@@ -1962,28 +1962,24 @@\n k.mostrar()%0A\n-    \n     elif arg\n@@ -1995,36 +1995,32 @@\n ligar%22:%0A        \n- \n-   \n notebook.ligar()\n@@ -2012,36 +2012,32 @@\n otebook.ligar()%0A\n-    \n     elif args%5B0%5D\n@@ -2052,36 +2052,32 @@\n ligar%22:%0A        \n-    \n notebook.desliga\n@@ -2080,28 +2080,24 @@\n ligar()%0A    \n-   \n- \n elif args%5B0%5D\n@@ -2109,20 +2109,16 @@\n usar%22: %0A\n-    \n         \n@@ -2165,28 +2165,24 @@\n             \n-  \n-  \n notebook.usa\n@@ -2201,38 +2201,30 @@\n %5D))%0A        \n-    \n else:%0A\n-    \n             \n@@ -2262,36 +2262,32 @@\n  uso em horas%22)%0A\n-    \n     else:%0A      \n",
+            "lines": "89"
+        },
+        {
+            "label": "2025-10-20_23-49-17",
+            "content": "@@ -2380,14 +2380,15 @@\n %C3%A1lido%22)%0A\n+%0A\n main()\n",
+            "lines": "89"
+        },
+        {
+            "label": "2025-10-20_23-49-34",
+            "content": "@@ -137,78 +137,8 @@\n de%0A%0A\n-    def getCapacidade(self) -%3E int:%0A        return self.__capacidade%0A%0A\n     \n@@ -1779,43 +1779,8 @@\n k()%0A\n-    bateria: Bateria %7C None = None%0A\n     \n@@ -1791,16 +1791,16 @@\n e True:%0A\n+\n         \n@@ -1876,57 +1876,8 @@\n %22)%0A%0A\n-        if len(args) == 0:%0A            continue%0A%0A\n     \n@@ -2328,32 +2328,32 @@\n )%0A        else:%0A\n+\n             prin\n@@ -2383,833 +2383,8 @@\n do%22)\n-%0A%0A        elif args%5B0%5D == %22bateria%22:%0A            if len(args) %3E 1 and args%5B1%5D.isdigit():%0A                bateria = Bateria(int(args%5B1%5D))%0A                print(f%22Bateria criada com capacidade %7Bargs%5B1%5D%7D%22)%0A            else:%0A                print(%22fail: informe a capacidadde da bateria%22)%0A%0A        elif args%5B0%5D == %22mostrarbateria%22:%0A            if bateria is not None:%0A                bateria.mostrar()%0A            else:%0A                print(%22fail: nenhuma bateria foi criada%22)%0A            %0A        elif args%5B0%5D == %22setbateria%22:%0A            if baterua is not None:%0A                notebook.setBateria(bateria)%0A            else:%0A                print(%22fail: nenhuma bateria dispon%C3%ADvel%22)%0A%0A        elif args%5B0%5D == %22descarregar%22:%0A            bateria = notebook.descarregar()%0A%0A        else:%0A            print(%22fail: comando inv%C3%A1lido%22)\n %0Amai\n",
+            "lines": "88"
+        },
+        {
+            "label": "2025-10-25_18-47-37",
+            "content": "@@ -108,22 +108,20 @@\n  self.__\n-bateri\n+carg\n a: int =\n@@ -206,38 +206,36 @@\n ade%0A%0A    def get\n-Bateri\n+Carg\n a(self) -%3E int:%0A\n@@ -256,22 +256,20 @@\n  self.__\n-bateri\n+carg\n a%0A%0A    d\n@@ -266,38 +266,36 @@\n rga%0A%0A    def set\n-Bateri\n+Carg\n a(self, value: i\n@@ -332,38 +332,36 @@\n          self.__\n-bateri\n+carg\n a = 0%0A        el\n@@ -405,30 +405,28 @@\n      self.__\n-bateri\n+carg\n a = self.__c\n@@ -464,30 +464,28 @@\n      self.__\n-bateri\n+carg\n a = value%0A%0A \n@@ -555,22 +555,20 @@\n  self.__\n-bateri\n+carg\n a:%0A     \n@@ -581,22 +581,20 @@\n  self.__\n-bateri\n+carg\n a -= tem\n@@ -662,22 +662,20 @@\n  self.__\n-bateri\n+carg\n a %0A     \n@@ -684,30 +684,28 @@\n      self.__\n-bateri\n+carg\n a = 0%0A      \n@@ -764,38 +764,36 @@\n rint(f%22(%7Bself.__\n-bateri\n+carg\n a%7D/%7Bself.__capac\n@@ -852,22 +852,20 @@\n %7Bself.__\n-bateri\n+carg\n a%7D/%7Bself\n@@ -963,480 +963,8 @@\n lse%0A\n-        self.__bateria: Bateria %7C None = None%0A%0A    def getBateria(self) -%3E Bateria %7C None:%0A        retur self.__bateria%0A        %0A    def setBateria(self, bateria: Bateria):%0A        if self.__bateria is None:%0A            print(%22fail: nenhuma bateria para remover%22)%0A            return None%0A        else:%0A            print(%22bateria removida%22)%0A            bateria = self.__bateria%0A            self.__bateria = None%0A            self.__ligado = False%0A            return bateria%0A\n     \n@@ -1238,25 +1238,25 @@\n igado = Fals\n-e\n+o\n %0A           \n@@ -3245,17 +3245,19 @@\n == %22\n-rmbateria\n+descarregar\n %22:%0A \n@@ -3290,17 +3290,19 @@\n ook.\n-rmBateria\n+descarregar\n ()%0A%0A\n",
+            "lines": "120"
+        },
+        {
+            "label": "2025-10-25_18-57-40",
+            "content": "@@ -1081,33 +1081,32 @@\n e:%0A        retur\n-n\n  self.__bateria%0A\n",
+            "lines": "135"
+        },
+        {
+            "label": "2025-10-25_18-57-54",
+            "content": "@@ -514,17 +514,16 @@\n escarreg\n-a\n r(self, \n@@ -534,32 +534,32 @@\n o: int) -%3E int:%0A\n+\n         if tempo\n@@ -1098,33 +1098,41 @@\n  self.__bateria%0A\n+        \n %0A\n-\n     def setBater\n@@ -1163,225 +1163,8 @@\n a):%0A\n-        if self.__bateria is not None:%0A            print(%22fail: j%C3%A1 existe uma bateria instalada%22)%0A        else:%0A            self.__bateria = bateria%0A            print(%22bateria inserida%22)%0A    %0A    def rmBateria(self):%0A\n     \n@@ -2476,24 +2476,68 @@\n ine%7D%22)%0A%0A    \n+    if len(args) == 0:%0A            continue%0A\n %0A        if \n@@ -2979,38 +2979,30 @@\n s%22)%0A        \n-    \n else:%0A\n-    \n             \n@@ -3029,24 +3029,25 @@\n  inv%C3%A1lido%22)%0A\n+%0A\n         elif\n@@ -3313,24 +3313,25 @@\n a bateria%22)%0A\n+%0A\n         elif\n@@ -3502,24 +3502,37 @@\n oi criada%22)%0A\n+            %0A\n         elif\n@@ -3714,16 +3714,17 @@\n n%C3%ADvel%22)%0A\n+%0A\n         \n@@ -3744,32 +3744,32 @@\n == %22rmbateria%22:%0A\n-\n             bate\n@@ -3795,16 +3795,17 @@\n teria()%0A\n+%0A\n         \n",
+            "lines": "135"
+        },
+        {
+            "label": "2025-10-25_19-11-17",
+            "content": "@@ -3133,32 +3133,98 @@\n  uso em horas%22)%0A\n+            else:%0A                print(%22Fail: comando inv%C3%A1lido%22)%0A\n         elif arg\n",
+            "lines": "135"
+        },
+        {
+            "label": "2025-10-25_19-12-20",
+            "content": "class Bateria:\n    def __init__(self, capacidade: int):\n        self.__capacidade: int = capacidade\n        self.__bateria: int = capacidade\n\n    def getCapacidade(self) -> int:\n        return self.__capacidade\n\n    def getBateria(self) -> int:\n        return self.__bateria\n\n    def setBateria(self, value: int):\n        if value < 0:\n            self.__bateria = 0\n        elif value > self.__capacidade:\n            self.__bateria = self.__capacidade\n        else:\n            self.__bateria = value\n\n    def descarregar(self, tempo: int) -> int:\n        if tempo <= self.__bateria:\n            self.__bateria -= tempo\n            return tempo\n        else:\n            usado = self.__bateria \n            self.__bateria = 0\n            return usado\n\n    def mostrar(self):\n        print(f\"({self.__bateria}/{self.__capacidade})\")\n\n    def __str__(self):\n        return f\"({self.__bateria}/{self.__capacidade})\"\n\n\nclass Notebook:\n    def __init__(self):\n        self.__ligado: bool = False\n        self.__bateria: Bateria | None = None\n\n    def getBateria(self) -> Bateria | None:\n        return self.__bateria\n\n    def setBateria(self, bateria: Bateria):\n        if self.__bateria is not None:\n            print(\"fail: j\u00e1 existe uma bateria instalada\")\n        else:\n            self.__bateria = bateria\n            print(\"bateria inserida\")\n    \n    def rmBateria(self):\n        if self.__bateria is None:\n            print(\"fail: nenhuma bateria para remover\")\n            return None\n        else:\n            print(\"bateria removida\")\n            bateria = self.__bateria\n            self.__bateria = None\n            self.__ligado = False\n            return bateria\n      \n    def ligar(self):\n        if not self.__ligado:\n            self.__ligado = True\n            print(\"Notebook ligando\")\n        else:\n            print(\"O notebook j\u00e1 est\u00e1 ligado\")\n        \n    def desligar(self):\n        if not self.__ligado:\n            self.ligado = False\n            print(\"Notebook desligando\")\n        else:\n            print(\"Notebook j\u00e1 est\u00e1 desligado\")\n\n    def mostrar(self):\n        estado = \"ligado\" if self.__ligado else \"desligado\"\n        print(f\"Notebook est\u00e1 {estado}\")\n\n    def usar(self, horas: int):\n        if self.__ligado:\n            print(f\"Usando o notebook por {horas} horas\")\n        else:\n            print(\"Erro: Notebook desligado. Tente ligar primeiro.\")\n    \n    def __str__(self):\n        estado = \"ligado\" if self.__ligado else \"desligado\"\n        return f\"Notebook est\u00e1 {estado}\"\n\n    \ndef main():\n    notebook = Notebook()\n    bateria: Bateria | None = None\n    while True:\n        line = input()\n        args = line.split(\" \")\n        print(f\"&{line}\")\n\n    \n        if args[0] == \"end\":\n            break\n        elif args[0] == \"show\":\n            notebook.mostrar()\n        elif args[0] == \"ligar\":\n            notebook.ligar()\n        elif args[0] == \"desligar\":\n            notebook.desligar()\n        elif args[0] == \"usar\": \n            if len(args) > 1 and args[1].isdigit():\n                notebook.usar(int(args[1]))\n            else:\n                print(\"Fail: informe o tempo de uso em horas\")\n        elif args[0] == \"bateria\":\n            if len(args) > 1 and args[1].isdigit():\n                bateria = Bateria(int(args[1]))\n                print(f\"Bateria criada com capacidade {args[1]}\")\n            else:\n                print(\"fail: informe a capacidadde da bateria\")\n        elif args[0] == \"mostrarbateria\":\n            if bateria is not None:\n                bateria.mostrar()\n            else:\n                print(\"fail: nenhuma bateria foi criada\")\n        elif args[0] == \"setbateria\":\n            if baterua is not None:\n                notebook.setBateria(bateria)\n            else:\n                print(\"fail: nenhuma bateria dispon\u00edvel\")\n        elif args[0] == \"rmbateria\":\n            bateria = notebook.rmBateria()\n        else:\n            print(\"fail: comando inv\u00e1lido\")\nmain()",
+            "lines": "133"
         }
     ]
 }
