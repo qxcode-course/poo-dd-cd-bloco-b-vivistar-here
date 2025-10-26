@@ -21,6 +21,7 @@ tasks:
   poo@roupa: '{rate:100, human:amigo, alone:6, study:5}'
   poo@relogio: '{rate:100, human:amigo, iagen:copilot_e_gpt, alone:7, study:112}'
   poo@motoca: '{rate:100, iagen:correcao, alone:8, study:75}'
+  poo@grafite: '{rate:100, iagen:correcao, alone:8, study:65}'
 flags:
   quests: 0
   tracks: 0
