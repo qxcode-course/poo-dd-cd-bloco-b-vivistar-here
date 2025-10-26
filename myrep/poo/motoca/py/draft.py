@@ -14,8 +14,8 @@ class Pessoa:
 
 
 class Motoca:
-    def __init__(self):
-        self.__potencia = 1
+    def __init__(self, power: int = 1):
+        self.__power = power
         self.__time = 0
         self.__pessoa: Pessoa | None = None
 
@@ -48,17 +48,17 @@ class Motoca:
             print("fail: too old to drive")
             return
         if time > self.__time:
-            print("fail: time finished after {self.__time} minutes")
+            print(f"fail: time finished after {self.__time} minutes")
             self.__time = 0
         else:
             self.__time -= time
 
     def honk(self):
-        print("P" + "e" * self.__potencia + "m!")
+        print("P" + "e" * self.__power + "m")
 
     def __str__(self):
         pessoa_str = "empty" if self.__pessoa is None else str(self.__pessoa)
-        return f"potencia: {self.__potencia}, time: {self.__time}, pessoa: ({pessoa_str})"
+        return f"power:{self.__power}, time:{self.__time}, person:({pessoa_str})"
 
 def main():
     moto = Motoca()
@@ -67,29 +67,31 @@ def main():
     while True:
         line = input()
         args = line.split()
-        print("${line}")
+        print("$"+ line)
 
         if args[0] == "end":
             break
 
         elif args[0] == "init":
-            moto = Motoca()
+            if len(args) == 2 and args[1].isdigit():
+                moto = Motoca(int(args[1]))
+            else:
+                moto = Motoca()
 
         elif args[0] == "show":
             print(moto)
 
         elif args[0] == "enter":
-            name = args[1]
-            age = int(args[2])
-            pessoa = Pessoa(name, age)
-            moto.inserir(pessoa)
-            else: 
-                print("fail: enter name age")
+            if len(args) == 3:
+                pessoa = Pessoa(args[1], int(args[2]))
+                moto.inserir(pessoa)
+            else:
+                print("fail: informe nome e idade")
         
         elif args[0] == "leave":
             pessoa = moto.remover()
             if pessoa:
-                print(f"{pessoa} saiu da motoca")
+                print(f"{pessoa}")
 
         elif args[0] == "buy":
             if len(args) == 2 and args[1].isdigit():
