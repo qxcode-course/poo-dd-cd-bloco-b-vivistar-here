@@ -33,7 +33,7 @@ class Moto:
         self.__custo = 0
 
     def setMotorista(self, motorista: Pessoa):
-        if motorista is not None:
+        if self.__motorista is not None:
             print("fail: ja existe motorista")
             return
         self.__motorista = motorista
@@ -71,13 +71,69 @@ class Moto:
         if pago < self.__custo:
             print(f"{self.__passageiro.getNome()} pagou R${pago:.2f}, Uber completou o resto do valor")
         else:
-            print(f"{self._passageiro.getNome()} pagou R${pago:.2f}")
+            print(f"{self.__passageiro.getNome()} pagou R${pago:.2f}")
         self.__passageiro = None
         self.__custo = 0
 
     def __str__(self):
-        motorista = self.__motorista.getNome() if self.__motorista is not None else "nenhum"
-        passageiro = self.__passageiro.getNome() if self.__passageiro else "nenhum"
-        print(f"Motorista: {motorista}, Passageiro: {passageiro}, Custo: R${self.__custo:.2f}")
+        if self.__motorista is not None:
+            motorista = f"{self.__motorista.getNome()}:{int(self.__motorista.getDinheiro())}"
+        else:
+            motorista = "None"
+
+        if self.__passageiro is not None:
+            passageiro = f"{self.__passageiro.getNome()}:{int(self.__passageiro.getDinheiro())}"
+        else:
+            passageiro = "None"
+        return f"Cost: {int(self.__custo)}, Driver: {motorista}, Passenger: {passageiro}"
 
 
+def main():
+    moto = Moto()
+    pessoas ={}
+
+    while True:
+        line = input()
+        args = line.split()
+        print("$" + line)
+
+        if args[0] == "end":
+            break
+
+        elif args[0] == "addPerson":
+            nome = args[1]
+            dinheiro = float(args[2])
+            pessoas[nome] = Pessoa(nome, dinheiro)
+
+        elif args[0] == "setDriver":
+            nome = args[1]
+            dinheiro = float(args[2])
+            motorista = Pessoa(nome, dinheiro)
+            moto.setMotorista(motorista)
+
+        elif args[0] == "rmMotorista":
+            moto.removerMotorista()
+
+        elif args[0] == "subir":
+            nome = args[1]
+            if nome in pessoas:
+                moto.subiuPassageiro(pessoas[nome])
+            else:
+                print("fail: pessoa nao encontrada")
+
+        elif args[0] == "dirigir":
+            km = float(args[1])
+            moto.dirigir(km)
+
+        elif args[0] == "descer":
+            moto.descerPassageiro()
+
+        elif args[0] == "show":
+            if moto:
+                print(moto)
+            else:
+                print("fail: moto nao inicializada")
+
+        else:
+            print("fail: comando invalido")
+main()
