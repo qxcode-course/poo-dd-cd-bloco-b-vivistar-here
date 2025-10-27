@@ -22,7 +22,7 @@ class Pessoa:
         self.__dinheiro += value
 
     def __str__(self):
-        return f"{self.__nome}: R$ {self.__dinheiro:.2f}"
+        return f"{self.__nome}:R${self.__dinheiro:.2f}"
 
 
 
@@ -53,7 +53,6 @@ class Moto:
             return
         self.__passageiro = passageiro
         self.__custo = 0
-        print(f"passageiro {passageiro.getNome()} subiu na moto")
 
     def dirigir(self, km: float):
         if self.__passageiro is None:
@@ -63,17 +62,18 @@ class Moto:
 
     def descerPassageiro(self):
         if self.__passageiro is None:
-            print("fail: nao ha passageiro pra descer")
+            print("fail: nao existe passageiro na moto")
             return
-        print(f"{self.__passageiro.getNome()} desceu. Corrida custou R${self.__custo:.2f}")
-        pago = self.__passageiro.pagar(self.__custo)
-        self.__motorista.receber(self.__custo)
-        if pago < self.__custo:
-            print(f"{self.__passageiro.getNome()} pagou R${pago:.2f}, Uber completou o resto do valor")
+        if self.__passageiro.getDinheiro() < self.__custo:
+            print("fail: Passenger does not have enough money")
         else:
-            print(f"{self.__passageiro.getNome()} pagou R${pago:.2f}")
+            pago = self.__passageiro.pagar(self.__custo)
+            self.__motorista.receber(pago)
+            print(f"{self.__passageiro.getNome()}:{int(self.__passageiro.getDinheiro())} left")
+            
         self.__passageiro = None
         self.__custo = 0
+         
 
     def __str__(self):
         if self.__motorista is not None:
@@ -108,24 +108,25 @@ def main():
         elif args[0] == "setDriver":
             nome = args[1]
             dinheiro = float(args[2])
-            motorista = Pessoa(nome, dinheiro)
-            moto.setMotorista(motorista)
+            if nome not in pessoas:
+                pessoas[nome] = Pessoa(nome, dinheiro)
+            moto.setMotorista(pessoas[nome])
 
         elif args[0] == "rmMotorista":
             moto.removerMotorista()
 
-        elif args[0] == "subir":
+        elif args[0] == "setPass":
             nome = args[1]
-            if nome in pessoas:
-                moto.subiuPassageiro(pessoas[nome])
-            else:
-                print("fail: pessoa nao encontrada")
+            dinheiro = float(args[2])
+            if nome not in pessoas:
+                pessoas[nome] = Pessoa(nome, dinheiro)
+            moto.subiuPassageiro(pessoas[nome])
 
-        elif args[0] == "dirigir":
+        elif args[0] == "drive":
             km = float(args[1])
             moto.dirigir(km)
 
-        elif args[0] == "descer":
+        elif args[0] == "leavePass":
             moto.descerPassageiro()
 
         elif args[0] == "show":
