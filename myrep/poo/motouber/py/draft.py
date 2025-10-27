@@ -61,16 +61,15 @@ class Moto:
         self.__custo += km
 
     def descerPassageiro(self):
-        if self.__passageiro is None:
-            print("fail: nao existe passageiro na moto")
-            return
         if self.__passageiro.getDinheiro() < self.__custo:
             print("fail: Passenger does not have enough money")
-        else:
-            pago = self.__passageiro.pagar(self.__custo)
+        
+        pago = self.__passageiro.pagar(self.__custo)
+        
+        if self.__motorista is not None:
             self.__motorista.receber(pago)
             print(f"{self.__passageiro.getNome()}:{int(self.__passageiro.getDinheiro())} left")
-            
+
         self.__passageiro = None
         self.__custo = 0
          
